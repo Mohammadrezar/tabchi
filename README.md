@@ -75,7 +75,7 @@ lua creator.lua
 ```
 cd tabchi
 
-./diamond.sh
+screen ./diamond.sh
 ```
 
 #Ch: [@TeleDiamondCh](http://telegram.me/telediamondch)
