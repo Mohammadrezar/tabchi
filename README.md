@@ -4,12 +4,12 @@
 
 مراحل روبترتیب انجام بدین
 
-#نصب
+# نصب
 ```
 git clone https://github.com/Mohammadrezar/tabchi.git && cd tabchi && chmod 777 install.sh && ./install.sh
 ```
  
-#ساختن و ران کردن
+# ساختن و ران کردن
  ```  
  lua creator.lua
  ```
@@ -17,7 +17,7 @@ git clone https://github.com/Mohammadrezar/tabchi.git && cd tabchi && chmod 777 
  
 سپس ایدی عددی خودتون رو وارد کنید
 
-#ران
+# ران
 
 کد زیر را وارد کنید
 ```
@@ -25,7 +25,7 @@ git clone https://github.com/Mohammadrezar/tabchi.git && cd tabchi && chmod 777 
 ```
 
 
-#وارد کردن شماره
+# وارد کردن شماره
 
 شماره  بصورت زیر وارد کنید
 
@@ -33,7 +33,7 @@ git clone https://github.com/Mohammadrezar/tabchi.git && cd tabchi && chmod 777 
 
 سپس کد رو وارد کنید
 
-#لانچ نهایی
+# لانچ نهایی
 
 ترمینال رو ببندید و دوباره باز کنید
 
@@ -46,7 +46,7 @@ screen ./tabchi-0.sh
 ```
 
 
-#رباتهای بیشتر
+# رباتهای بیشتر
 
 برای زدن ربات دوم و سوم ...
 
@@ -64,7 +64,7 @@ lua creator.lua
 
 و برای ساختن ربات های بیشتر عین مرحله قبل فقط عدد قبلی در هر مرحله یکی بیشتر میشود
 
-#لانچ همگانی
+# لانچ همگانی
  
 شما میتوانید با انتی کرش موجود هم همه رباتهارو با یک کد لانچ کنید هم حافظه کش سرور رو پاک کنید وهم از اف شدن ربات جلوگیری کنید
 
@@ -78,6 +78,6 @@ cd tabchi
 screen ./diamond.sh
 ```
 
-#Ch: [@TeleDiamondCh](http://telegram.me/telediamondch)
+# Ch: [@TeleDiamondCh](http://telegram.me/telediamondch)
 
-#Opened By: [@Mrr619](http://telegram.me/Mrr619)
+# Opened By: [@Mrr619](http://telegram.me/Mrr619)
