@@ -6,7 +6,7 @@
 
 # نصب
 ```
-git clone https://github.com/Mohammadrezar/tabchi.git && cd tabchi && chmod 777 install.sh && ./install.sh
+git clone https://github.com/Mohammadrezar/tabchi.git && cd tabchi && chmod 777 diamond.sh && chmod 777 install.sh && ./install.sh
 ```
  
 # ساختن و ران کردن
