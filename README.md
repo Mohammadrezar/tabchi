@@ -15,6 +15,11 @@ git clone https://github.com/Mohammadrezar/tabchi.git && cd tabchi && chmod 777 
 
 وارد کردن شماره و کد...
 
+برای روشن شدن همه ربات ها و اتولانچ از کد زیر استفاده کنید
+```
+cd tabchi;killall screen;killall tmux;screen ./bot autolaunch
+```
+
 
 >> برای دیدن آموزش نصب سورس کلیک کنید
 
