@@ -16,9 +16,10 @@ git clone https://github.com/Mohammadrezar/tabchi.git && cd tabchi && chmod 777 
 وارد کردن شماره و کد...
 
 
-** برای آموزش نصب سورس به کانال ما مراجعه کنید
+>> برای دیدن آموزش نصب سورس کلیک کنید
 
-** [ورود به کانال](https://t.me/TeleDiamondCh/1260)
+>> [آموزش نصب سورس تبچی](https://t.me/TeleDiamondCh/1260)
 
 
-** [Mrr619](https://t.me/mrr619)
+
+>> [Mrr619](https://t.me/mrr619)
