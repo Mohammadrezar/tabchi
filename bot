@@ -225,9 +225,6 @@ install() {
     دستور اشتباه
   Wrong command
  '
-      install
-    ;;
-  esac
 }
 # How to use this script
 usage() {
