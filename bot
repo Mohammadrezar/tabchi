@@ -19,7 +19,7 @@ prtbrown() {
 }
 # update data to the last version
 update() {
-  git fetch --all && git reset --hard origin/master && git pull origin master && chmod +x bot
+  git fetch --all && git reset --hard origin/persian && git pull origin persian && chmod +x bot
     prtgrn "
       بروزرسانی اطلاعات با موفقیت انجام شد <<
   >> Bot's source successfully updated
@@ -126,7 +126,14 @@ clear() {
 }
 # install Bot
 install() {
-      prtgrn '
+  prtgrn '
+         آیا قصد نصب پیش نیاز های ربات تبلیغ‌گر را دارید؟ بله|خیر <<
+  >> Do you want to install Essentials of Bot? (Y/N):
+'
+  read -rp ' ' install
+  case "$install" in
+    Y|y|بله)
+      prtgrn "
          telegram-cli بارگیری <<
  >> Fetching $TDCLI
 "
@@ -167,8 +174,50 @@ install() {
     ;;
     N|n|خیر)
       prtbrown '
-        لغو عملیات
- Canceling the operation
+        نصب ربات بدون پیش نیاز ها ...!
+ '
+    ;;
+    *)
+      prtred '
+    دستور اشتباه
+  Wrong command
+ '
+      install
+    ;;
+  esac
+}
+# install Bot
+install() {
+  prtgrn '
+         آیا قصد نصب پیش نیاز های ربات تبلیغ‌گر را دارید؟ بله|خیر <<
+  >> Do you want to install Essentials of Bot? (Y/N):
+'
+  read -rp ' ' install
+  case "$install" in
+    N|n|خیر)
+      prtgrn "
+         telegram-cli بارگیری <<
+ >> Fetching $TDCLI
+"
+      wget "$TDCLI" -O telegram-cli
+      chmod +x telegram-cli
+
+      prtgrn "
+      redis راه اندازی مجدد  <<
+ >> Restarting redis service
+"
+      sudo service redis-server restart
+      prtgrn '
+      همگام سازی با جدیدترین نسخه تبلیغ‌گر << 
+ >> Fetching latest Bot source code
+ '
+      git pull
+
+      printf '\e[1;33mبسازید\e[1;32m ./bot create \e[1;33mربات تبلیغ‌گر خود را با دستور <<\e[1;33m%s\n >>Create Your bot with\e[1;32m ./bot create\e[0;39;49m%s\n'
+    ;;
+    Y|y|بله)
+      prtbrown '
+        نصب ربات با نصب پیش نیازها ...!
  '
     ;;
     *)
