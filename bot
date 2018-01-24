@@ -126,7 +126,7 @@ clear() {
 }
 # install Bot
 install() {
-      prtgrn "
+      prtgrn '
          telegram-cli بارگیری <<
  >> Fetching $TDCLI
 "
