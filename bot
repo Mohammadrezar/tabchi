@@ -19,7 +19,7 @@ prtbrown() {
 }
 # update data to the last version
 update() {
-  git fetch --all && git reset --hard origin/persian && git pull origin persian && chmod +x bot
+  git fetch --all && git reset --hard origin/master && git pull origin master && chmod +x bot
     prtgrn "
       بروزرسانی اطلاعات با موفقیت انجام شد <<
   >> Bot's source successfully updated
@@ -126,13 +126,6 @@ clear() {
 }
 # install Bot
 install() {
-  prtgrn '
-         آیا قصد نصب پیش نیاز های ربات تبلیغ‌گر را دارید؟ بله|خیر <<
-  >> Do you want to install Essentials of Bot? (Y/N):
-'
-  read -rp ' ' install
-  case "$install" in
-    Y|y|بله)
       prtgrn "
          telegram-cli بارگیری <<
  >> Fetching $TDCLI
