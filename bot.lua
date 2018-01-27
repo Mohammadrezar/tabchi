@@ -13,6 +13,7 @@ function get_admin ()
     	local admin=io.read()
 		redis:del("botBOT-IDadmin")
     	redis:sadd("botBOT-IDadmin", admin)
+  redis:set("botBOT-IDlink", true)
 		redis:set('botBOT-IDadminset',true)
     	return print("\n\27[36m     ADMIN ID |\27[32m ".. admin .." \27[36m| شناسه ادمین")
 	end
@@ -193,7 +194,7 @@ function tdcli_update_callback(data)
 		if msg.content_.ID == "MessageText" then
 			local text = msg.content_.text_
 			local matches
-			if not redis:get("botBOT-IDlink") then
+			if redis:get("botBOT-IDlink") then
 				find_link(text)
 			end
 if not redis:get('autodeltime') then
@@ -260,7 +261,7 @@ redis:setex('autodeltime', delTime, true)
 						redis:set("botBOT-IDofflink", true)
 						return send(msg.chat_id_, msg.id_, "فرایند تایید لینک در های در انتظار متوقف شد.")
 					elseif matches == "شناسایی لینک" then	
-						redis:set("botBOT-IDlink")
+						redis:del("botBOT-IDlink")
 						return send(msg.chat_id_, msg.id_, "فرایند شناسایی لینک متوقف شد.")
 					elseif matches == "افزودن مخاطب" then	
 						redis:del("botBOT-IDsavecontacts")
@@ -277,7 +278,7 @@ redis:setex('autodeltime', delTime, true)
 						redis:del("botBOT-IDofflink")
 						return send(msg.chat_id_, msg.id_, "فرایند تایید لینک های در انتظار فعال شد.")
 					elseif matches == "شناسایی لینک" then	
-						redis:del("botBOT-IDlink", true)
+						redis:set("botBOT-IDlink", true)
 						return send(msg.chat_id_, msg.id_, "فرایند شناسایی لینک فعال شد.")
 					elseif matches == "افزودن مخاطب" then	
 						redis:set("botBOT-IDsavecontacts", true)
@@ -514,7 +515,7 @@ redis:setex('autodeltime', delTime, true)
 					local links = redis:scard("botBOT-IDsavedlinks")
 					local offjoin = redis:get("botBOT-IDoffjoin") and "❌" or "✅️"
 					local offlink = redis:get("botBOT-IDofflink") and "❌" or "✅️"
-					local nlink = redis:get("botBOT-IDlink") and "❌" or "✅️"
+					local nlink = redis:get("botBOT-IDlink") and "✅" or "❌"
 					local contacts = redis:get("botBOT-IDsavecontacts") and "✅️" or "❌"
 					local txt = "⚙️  <i>وضعیت اجرایی تبلیغ‌گر</i><code> BOT-ID</code>  ⛓\n\n"..tostring(offjoin).."<code> عضویت خودکار </code>🚀\n"..tostring(offlink).."<code> تایید لینک خودکار </code>🚦\n"..tostring(nlink).."<code> تشخیص لینک های عضویت </code>🎯\n"..tostring(contacts).."<code> افزودن خودکار مخاطبین </code>➕\n" .. tostring(autoanswer) .."<code> حالت پاسخگویی خودکار 🗣 </code>\n" .. tostring(numadd) .. "<code> افزودن مخاطب با شماره 📞 </code>\n" .. tostring(msgadd) .. "<code> افزودن مخاطب با پیام 🗞</code>\n〰〰〰ا〰〰〰\n📄<code> پیام افزودن مخاطب :</code>\n📍 " .. tostring(txtadd) .. " 📍\n〰〰〰ا〰〰〰\n\n<code>📁 لینک های ذخیره شده : </code><b>" .. tostring(links) .. "</b>\n<code>⏲	لینک های در انتظار عضویت : </code><b>" .. tostring(glinks) .. "</b>\n🕖   <b>" .. tostring(s) .. " </b><code>ثانیه تا عضویت مجدد</code>\n<code>❄️ لینک های در انتظار تایید : </code><b>" .. tostring(wlinks) .. "</b>\n🕑️   <b>" .. tostring(ss) .. " </b><code>ثانیه تا تایید لینک مجدد</code>\n"
 					return send(msg.chat_id_, 0, txt)
@@ -813,7 +814,7 @@ return send(msg.chat_id_, msg.id_, "انجام شد ✅\nحال برای تعی�
 			end
 		elseif msg.content_.ID == "MessageChatDeleteMember" and msg.content_.id_ == bot_id then
 			return rem(msg.chat_id_)
-		elseif (msg.content_.caption_ and not redis:get("botBOT-IDlink"))then
+		elseif (msg.content_.caption_ and redis:get("botBOT-IDlink"))then
 			find_link(msg.content_.caption_)
 		end
 		if redis:get("botBOT-IDmarkread") then
